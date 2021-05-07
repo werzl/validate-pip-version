@@ -20,8 +20,12 @@ Upgrading
 pip install validate-pip-version --upgrade
 ```
   
+<br/><br/>
+  
 # GitHub Actions Example
 https://github.com/werzl/validate-pip-version/blob/master/.github/workflows/CI.yml
+  
+<br/><br/>
   
 # Usage
 ```
