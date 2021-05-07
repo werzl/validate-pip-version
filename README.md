@@ -20,6 +20,9 @@ Upgrading
 pip install validate-pip-version --upgrade
 ```
   
+# GitHub Actions Example
+https://github.com/werzl/validate-pip-version/blob/master/.github/workflows/CI.yml
+  
 # Usage
 ```
 validate_pip_version [OPTIONS] COMMAND [ARGS]
