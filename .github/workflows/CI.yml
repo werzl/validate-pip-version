@@ -1,0 +1,31 @@
+name: CI
+
+env:
+  PACKAGE_NAME: validate-pip-version
+  VERSION_FILE_PATH: validate_pip_version/__init__.py
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+          architecture: "x64"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools wheel twine
+      - name: Run Version Checker
+        run: |
+          pip install ${{ env.PACKAGE_NAME }}
+          pip install validate-pip-version
+          validate_pip_version check-init-file -n ${{ env.PACKAGE_NAME }} --init_file_path ${{ env.VERSION_FILE_PATH }}
+      - name: Build
+        run: python setup.py sdist bdist_wheel
