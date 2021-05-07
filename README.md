@@ -59,6 +59,10 @@ jobs:
         run: python setup.py sdist bdist_wheel
 ```
   
+<br/>
+  
+![image](./github_actions_example.png)
+  
 <br/><br/>
   
 # Usage
