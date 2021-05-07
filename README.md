@@ -20,6 +20,51 @@ Upgrading
 pip install validate-pip-version --upgrade
 ```
   
+<br/><br/>
+  
+# GitHub Actions Example
+https://github.com/werzl/validate-pip-version/blob/master/.github/workflows/CI.yml
+  
+```
+name: CI
+
+env:
+  PACKAGE_NAME: <package_name>
+  VERSION_FILE_PATH: <path_to__init__.py>
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+          architecture: "x64"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools wheel twine
+      - name: Run Version Checker
+        run: |
+          pip install ${{ env.PACKAGE_NAME }}
+          pip install validate-pip-version
+          validate_pip_version check-init-file -n ${{ env.PACKAGE_NAME }} --init_file_path ${{ env.VERSION_FILE_PATH }}
+      - name: Build
+        run: python setup.py sdist bdist_wheel
+```
+  
+<br/>
+  
+![image](./github_actions_example.png)
+  
+<br/><br/>
+  
 # Usage
 ```
 validate_pip_version [OPTIONS] COMMAND [ARGS]
