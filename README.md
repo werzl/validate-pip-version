@@ -61,7 +61,7 @@ jobs:
   
 <br/>
   
-![image](./github_actions_example.png)
+![image](https://github.com/werzl/validate-pip-version/blob/master/github_actions_example.png?raw=true)
   
 <br/><br/>
   
