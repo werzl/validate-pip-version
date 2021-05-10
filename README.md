@@ -109,7 +109,7 @@ validate_pip_version check-init-file -n <package_name> --init_file_path <path_to
 ## check-setup-file
 Retrieves the local package version from an setup.py file, by matching the string '`version=`' and stripping away spaces/newlines.
 ```
-validate_pip_version check-setup-file -n <package_name> --init_file_path <path_to_setup.py>
+validate_pip_version check-setup-file -n <package_name> --setup_file_path <path_to_setup.py>
 ```
   
 ### Options
